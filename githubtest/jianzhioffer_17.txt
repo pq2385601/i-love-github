@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+#include<string.h>
+using namespace std;
+
+
+void printNum (char * ch,int n)
+{
+	for(int i=0;i<n;i++)
+
+	{
+		cout<<ch[i];
+	}
+	cout<<endl;
+
+}
+int main()
+{
+	int n;
+	cin>>n;
+
+	char *ch = new char[n+1];
+
+	for(int i=0;i<n;i++)
+	{
+		ch[i]='0';
+	}
+	ch[n]='\0';
+	//ch='00000';
+	char *max = new char[n+1];
+	for(int i=0;i<n;i++)
+	{
+		max[i]='9';
+	}
+	max[n]='\0';
+	while(1)
+	{
+		if(strcmp(ch,max)==0)
+		{
+			break;
+		}
+		bool flag=0;
+
+		ch[n-1]++;
+		if(ch[n-1]==('9'+1))
+		{
+			flag=1;
+			ch[n-1]='0';
+		}
+		
+		for(int k=n-2;k>=0;k--)
+		{
+			if(flag==1)
+			{
+				ch[k]++;
+			}
+
+			//if(ch[k]!='9'&&ch[k]!=('9'+1))
+			if(ch[k]!=('9'+1))
+			{
+				//ch[k-1]++;
+				flag=0;
+				printNum(ch,n);
+				break;
+			}
+			else if(ch[k]=='9'+1)
+			{
+				flag =1;
+				ch[k] ='0';
+				//printNum(ch,n);
+				//ch[k-1]++;
+			}
+		}
+		//ch
+	}
+
+return 0;}
